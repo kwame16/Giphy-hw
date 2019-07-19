@@ -9,83 +9,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Giphy API!</title>
+
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title> -->
 </head>
 
 <body>
     <!-- button created -->
-    <button data-tag="Nets">Team of New York</button>
-    <button data-tag="Knicks">NY Laughing Stock</button>
-    <button data-tag="Yankees">Bronx Bommers</button>
-    <button data-tag="Mets">NY Laughing Stock #2</button>
-    <button data-tag="NY-Giants">Big Blue</button>
-    <button data-tag="NY-Jets">Gang Green</button>
+    <div id="button-view">
+</div>
+    <!-- input for user to search -->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dog"  type="button" id="button-addon1">Search</button>
+        </div>
+        <input type="text" class="form-control search" placeholder="Look for Giphy's here" aria-label="Example text with button addon" aria-describedby="button-addon1">
+      </div>
 
-    <div id="images">
-    </div>
+    <div id="images"></div>
 
     <!-- Javascript and jquery are in file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        // on click of button new images will occur
-        $('button').on("click", function () {
-            var teams = $(this).attr("data-tag");
-
-            // var queryURL ="https://api.giphy.com/v1/gifs/search?q=" + 
-            // teams + "api_key=X3mY7cmmtPhxTKbdKKGtYHsQaEyM94Uw&q=&limit=25&offset=0&rating=G&lang=en";
-
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-                teams + "&api_key=X3mY7cmmtPhxTKbdKKGtYHsQaEyM94Uw&limit=10&rating=G";
-
-            // preforming AJAX GET Request to pull from the API
-            $.ajax({
-                    url: queryURL,
-                    method: 'GET'
-                })
-
-                // after data is recieved from AJAX request, we handle that
-                .then(function (response) {
-                        console.log(queryURL);
-                        console.log(response);
-
-                        // stores the data from AJAX into the results variable
-                        var results = response.data;
-                        // looping through each result item
-                        for (var i = 0; i < results.length; i++) {
-                            // creating & storing a div tag
-                            var teamsDiv = $("<div>");
-
-                            // creating a paragraph tag with the result item's rating
-                            var p = $("<p>").text("Results: " + results[i].rating);
-
-                            // creating & storing a img tag
-                            var teamImage = $("<img>");
-
-                            // Setting the src attribute of the image to a property pulled off the result item
-                            teamImage.attr("src", results[i].images.fixed_height.url);
-
-                            // appending the paragraph and image tag to the teamsDiv
-                            teamsDiv.append(p);
-                            teamsDiv.append(teamImage);
-
-                            // prepending the teamDiv to the HTML page in the "images" div
-                            $("#images").prepend(teamsDiv);
-                }
-
-
-            })
-
-         });
-    </script>
+    <script type="text/javascript" src="css/js/giphy.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
-
-</html>
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
-</head>
-
-<body>
-
-</body>
-
+   
 </html>
